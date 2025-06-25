@@ -1,0 +1,9 @@
+#!name=A阿里云token
+#!desc=A阿里云token
+
+[Script]
+阿里云token = type=http-response, pattern=https:\/\/t\.aliyun\.com\/abs\/online-support\/listSessionV2\?source=chat&current=\d+&pageSize=\d+, script-path=https://raw.githubusercontent.com/bluezsy/rule/refs/heads/main/aly.js, requires-body=true
+
+
+[MITM]
+hostname = %APPEND% t.aliyun.com
