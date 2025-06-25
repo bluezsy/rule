@@ -6,9 +6,9 @@ $.is_debug = ($.isNode() ? process.env.IS_DEDUG : $.getdata('is_debug')) || 'fal
 $.notifyMsg = [];
 //青龙配置
 let QL = {
-    host: "https://ql.5213211.xyz:55555",
-    clientId: "LtBt58QpGu_m",
-    secret: "SuT7j3b6vS-S1FKFrcqbpy9J",
+    host: "https://ql.1233212.xyz:55555",
+    clientId: "P_LG-Cb6Agzr",
+    secret: "-c35W88LpEyBNnPLUjR9eiy7",
     envName: "aliyunWeb_data",
     taskName: "阿里云",
     autoRunTask: "false"
