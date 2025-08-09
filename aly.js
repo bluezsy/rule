@@ -20,25 +20,30 @@ async function getCookie() {
         return;
     }
 
-    const headers = ObjectKeys2LowerCase($request.headers);
-    const cookie = headers['Cookie'];
-
-    if (!cookie) {
-        console.log("❗未获取到 cookie");
-        return;
-    }
-
     const rawBody = $response?.body || '';
     console.log("响应体:", rawBody);
 
+    let token = '';
     let userId = '';
 
     try {
         const body = JSON.parse(rawBody);
-        // 修改此行，只改 nickname 获取路径
-        userId = body?.data?.list[0]?.userName || '';
+        const returnValue = body?.data?.returnValue;
+
+        const sid = returnValue?.sid || '';
+        userId = returnValue?.mobile || '';
+
+        if (sid) {
+            token = `login_aliyunid_ticket=${sid};`;
+        }
+
     } catch (e) {
         console.log("❗解析响应体失败:", e);
+        return;
+    }
+
+    if (!token) {
+        console.log("❗未获取到 token");
         return;
     }
 
@@ -48,13 +53,14 @@ async function getCookie() {
     }
 
     const user = {
-        token: cookie,
+        token: token,
         userId: userId,
     };
 
     console.log("✅ 获取用户信息成功:", JSON.stringify(user));
     return user;
 }
+
 
 
 
